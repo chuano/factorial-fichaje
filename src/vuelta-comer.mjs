@@ -1,9 +1,7 @@
 import puppeteer from "puppeteer";
-import dotenv from "dotenv";
 
-dotenv.config();
-const user = process.env.USERNAME;
-const password = process.env.PASSWORD;
+const user = process.argv[2];
+const password = process.argv[3];
 if (!user || !password) {
   console.error("Please set the USER and PASSWORD environment variables.");
   process.exit(1);
