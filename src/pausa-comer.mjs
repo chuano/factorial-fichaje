@@ -28,7 +28,7 @@ await page.locator("#user_password").fill(password);
 // Wait and click on first result.
 await page.locator('input[name="commit"]').click();
 
-await new Promise((resolve) => setTimeout(resolve, 35000));
+await new Promise((resolve) => setTimeout(resolve, 15000));
 
 const botones = await page.$$('button');
 for (const button of botones) {
