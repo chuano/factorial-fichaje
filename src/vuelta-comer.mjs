@@ -9,7 +9,7 @@ if (!user || !password) {
 
 // Launch the browser and open a new blank page
 const browser = await puppeteer.launch({
-  headless: false,
+  headless: true,
 });
 const page = await browser.newPage();
 
