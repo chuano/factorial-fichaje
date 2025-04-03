@@ -30,6 +30,9 @@ await page.locator('input[name="commit"]').click();
 
 await new Promise((resolve) => setTimeout(resolve, 15000));
 
+await page.screenshot({
+  path: "/tmp/" + user.replace("@", "_").replace(".", "_") + "-vuelta.png",
+});
 const botones = await page.$$('button');
 for (const button of botones) {
     const innerHTML = await page.evaluate(el => el.innerHTML, button);

@@ -9,7 +9,7 @@ if (!user || !password) {
 
 // Launch the browser and open a new blank page
 const browser = await puppeteer.launch({
-  args: ['--no-sandbox'],
+  args: ["--no-sandbox"],
   headless: true,
 });
 const page = await browser.newPage();
@@ -30,14 +30,17 @@ await page.locator('input[name="commit"]').click();
 
 await new Promise((resolve) => setTimeout(resolve, 15000));
 
-const botones = await page.$$('button');
+await page.screenshot({
+  path: "/tmp/" + user.replace("@", "_").replace(".", "_") + "-fichar.png",
+});
+const botones = await page.$$("button");
 for (const button of botones) {
-    const innerHTML = await page.evaluate(el => el.innerHTML, button);
-    if (innerHTML.includes("Fichar")) {
-        console.log(innerHTML);
-        await button.click();
-        break;
-    }
+  const innerHTML = await page.evaluate((el) => el.innerHTML, button);
+  if (innerHTML.includes("Fichar")) {
+    console.log(innerHTML);
+    await button.click();
+    break;
+  }
 }
 await new Promise((resolve) => setTimeout(resolve, 5000));
 await page.close();
